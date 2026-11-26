@@ -1,0 +1,1176 @@
+# MASTER DEVELOPMENT PROMPT: SHORT STUDY
+## Build a Premium, Fully Functional, AdSense-Ready Coding & Technology Education Platform
+
+Act as a world-class full-stack developer, UI/UX designer, database architect, SEO specialist, cybersecurity engineer, and Google AdSense compliance expert.
+
+Your task is to design, develop, and deploy a complete, production-quality educational website named **Short Study**.
+
+This must not look like an ordinary educational website or a generic AI-generated template. Build a premium technology and programming platform with exceptional UI/UX, professional visual hierarchy, excellent performance, and genuinely useful educational content.
+
+The website must be designed specifically for coding students, beginner programmers, computer science students, developers, and technology enthusiasts.
+
+**Primary objective:** Build a complete educational platform that provides original programming notes in PDF format and useful affiliate product recommendations, with a secure admin dashboard that controls both sections through a real database.
+
+---
+
+# 1. BRAND IDENTITY
+
+Website Name: Short Study
+
+Brand Positioning:
+A dedicated educational platform for programming, computer science, coding resources, and technology learning.
+
+Target Audience:
+- School students interested in programming.
+- Beginners learning their first programming language.
+- Computer science students.
+- Web developers.
+- Software developers.
+- Students preparing for technical interviews.
+- People interested in modern technologies.
+
+Brand Personality:
+- Professional
+- Educational
+- Modern
+- Trustworthy
+- Minimal
+- Developer-focused
+- Student-friendly
+
+Visual Identity:
+
+Create a premium interface inspired by the design quality of Linear, Vercel, Stripe, and modern developer documentation websites.
+
+Suggested color palette:
+- Main background: #030712
+- Secondary background: #090F1C
+- Card background: #111827
+- Primary accent: #6366F1
+- Secondary accent: #06B6D4
+- Success accent: #10B981
+- Primary text: #F9FAFB
+- Secondary text: #9CA3AF
+
+Typography:
+- Inter for normal content.
+- JetBrains Mono for coding-related elements.
+
+Use:
+- Beautiful gradients.
+- Subtle glass effects.
+- Premium cards.
+- Smooth transitions.
+- Consistent spacing.
+- Beautiful icons.
+- Carefully designed loading states.
+- Elegant hover animations.
+- Subtle background details.
+
+Avoid:
+- Excessive animations.
+- Overloaded layouts.
+- Generic AI website designs.
+- Unnecessary decorative elements.
+- Fake statistics.
+- Fake testimonials.
+- Fake user reviews.
+- Fake trust badges.
+
+The website must look professionally designed by an experienced development team.
+
+# 2. WEBSITE STRUCTURE
+
+Create the following main navigation:
+
+1. Home
+2. Coding Notes
+3. Affiliate Products
+4. About Us
+5. Contact Us
+
+The two main dynamic sections must be:
+
+A. Coding Notes
+B. Affiliate Products
+
+Both sections must be completely controlled through the Admin Dashboard.
+
+Create the following additional pages:
+
+- About Us
+- Contact Us
+- Privacy Policy
+- Terms and Conditions
+- Disclaimer
+- Affiliate Disclosure
+- Cookie Policy
+
+All pages must have actual written content, not placeholder text.
+
+# 3. HOMEPAGE UI/UX
+
+Build an impressive homepage.
+
+Hero Section:
+
+Main heading:
+
+"Learn to Code. Build Your Future."
+
+Supporting description:
+
+"Explore programming notes, computer science concepts, practical learning resources, and carefully selected technology products — all in one place."
+
+Primary button:
+Explore Coding Notes
+
+Secondary button:
+Explore Tech Products
+
+Add a beautiful coding-inspired visual element on the right side.
+
+Do not use generic AI-generated human illustrations.
+
+Homepage sections:
+
+1. Hero section.
+2. Introduction to Short Study.
+3. Featured Coding Notes.
+4. Programming Languages.
+5. Latest Learning Resources.
+6. Recommended Technology Products.
+7. Why Learn With Short Study?
+8. Frequently Asked Questions.
+9. Educational Disclaimer.
+10. Complete Footer.
+
+Every homepage section must have a meaningful purpose.
+
+Do not create empty sections just to make the homepage longer.
+
+# 4. CODING NOTES SECTION
+
+Create a dedicated Coding Notes page.
+
+Its purpose is to provide students with downloadable programming notes in PDF format.
+
+Programming categories should include:
+
+- Python
+- C Programming
+- C++
+- Java
+- JavaScript
+- HTML
+- CSS
+- SQL
+- Data Structures and Algorithms
+- Computer Science Fundamentals
+- Web Development
+- Other Programming Resources
+
+Display these categories through an attractive category navigation system.
+
+PDF RESOURCE CARD DESIGN:
+
+Every PDF resource must have a clean, professional horizontal layout.
+
+Left side:
+- PDF file icon.
+- Use a visually recognizable PDF symbol.
+- Display it in a beautiful icon container.
+
+Middle:
+- PDF document title.
+- Programming language.
+- Short original description.
+- File size, if available.
+- Last updated date.
+
+Right side:
+- Open button.
+- Download button.
+
+FUNCTIONAL REQUIREMENTS:
+
+When the user clicks Open:
+- Open the actual PDF in a new browser tab.
+- Display the PDF using the browser's PDF viewer.
+- Never redirect to an unrelated page.
+
+When the user clicks Download:
+- Download the actual PDF file.
+- Use a meaningful filename.
+- Ensure the file exists and is accessible.
+
+Additional features:
+- Search PDFs by title.
+- Filter by programming language.
+- Sort by newest.
+- Display the total number of available resources based on actual database records.
+- Show an attractive empty state if no PDFs are available.
+
+PDF STORAGE:
+
+Create a proper file upload and storage system.
+
+PDFs should be stored in a reliable storage provider, not as temporary server files.
+
+Store the following information in the database:
+
+- PDF ID
+- Title
+- Description
+- Programming language
+- File URL
+- File size
+- Original filename
+- Upload date
+- Last updated date
+- Published status
+
+Only display published PDFs on the public website.
+
+Do not create fake PDF links or pretend that unavailable files exist.
+
+# 5. AFFILIATE PRODUCTS SECTION
+
+Create a premium Affiliate Products page.
+
+The purpose is to recommend useful technology products to students, programmers, and developers.
+
+PRODUCT CARD LAYOUT:
+
+Use a horizontal three-part layout on desktop.
+
+LEFT SIDE:
+- Actual product image.
+- Product name.
+- Optional category label.
+
+MIDDLE:
+- Original product description.
+- Key features.
+- Important specifications.
+- Suitable audience.
+- Advantages.
+- Limitations, when relevant.
+
+RIGHT SIDE:
+- Visit Product button.
+- Affiliate link destination.
+
+FUNCTIONAL REQUIREMENTS:
+
+Every product must have its own working affiliate link.
+
+When a visitor clicks the button:
+- Open the correct affiliate destination.
+- Open in a new tab.
+- Never redirect to an unrelated website.
+- Never use fake affiliate URLs.
+
+All affiliate links must be configurable through the Admin Dashboard.
+
+Use appropriate link attributes:
+rel="sponsored nofollow noopener noreferrer"
+
+Add a clearly visible affiliate disclosure near the beginning of the Affiliate Products page.
+
+Suggested disclosure:
+
+"Short Study may earn a commission when you purchase products through certain links on this website. This comes at no additional cost to you. Our product recommendations are intended to help readers discover useful technology products."
+
+Do not claim that every product has been personally tested unless that is actually true.
+
+PRODUCT DATABASE FIELDS:
+
+- Product ID
+- Product name
+- Product image URL
+- Product description
+- Product category
+- Product features
+- Product specifications
+- Affiliate URL
+- Disclosure status
+- Publication status
+- Created date
+- Updated date
+
+PRODUCT CATEGORIES:
+
+- Programming Accessories
+- Keyboards and Mice
+- Laptops and Computers
+- Developer Tools
+- Audio Equipment
+- Study Accessories
+- Storage Devices
+- Other Technology Products
+
+Add search and category filtering.
+
+Make the product layout responsive.
+
+# 6. ADMIN DASHBOARD — /admin
+
+Create a completely functional administrative dashboard.
+
+Admin URL:
+
+https://yourdomain.com/admin
+
+IMPORTANT:
+The Admin Dashboard must not appear in the normal public navigation menu.
+
+However, hiding the route is not security.
+
+Implement actual authentication and server-side authorization.
+
+ADMIN AUTHENTICATION:
+
+- Secure login page.
+- Email and password authentication.
+- Password hashing handled by a trusted authentication provider.
+- Protected admin routes.
+- Server-side role verification.
+- Secure session management.
+- Logout functionality.
+- Rate limiting.
+- Protection against unauthorized database operations.
+
+Never expose admin passwords, database service keys, or secret API keys in frontend JavaScript.
+
+Do not create a publicly accessible admin account or hardcoded production credentials.
+
+ADMIN DASHBOARD DESIGN:
+
+Create a premium dark dashboard.
+
+Sidebar:
+
+1. Dashboard Overview
+2. Manage Coding Notes
+3. Manage Affiliate Products
+4. Media Library
+5. Website Settings
+6. Logout
+
+DASHBOARD OVERVIEW:
+
+Display real database statistics:
+
+- Total published PDFs.
+- Total unpublished PDFs.
+- Total affiliate products.
+- Total published products.
+- Recently added resources.
+- Recently updated products.
+
+Do not use hardcoded statistics.
+
+A. MANAGE CODING NOTES
+
+Provide the following functionality:
+
+- Add new PDF.
+- Upload PDF.
+- Edit existing PDF.
+- Change PDF title.
+- Change description.
+- Select programming language.
+- Replace PDF file.
+- Delete PDF.
+- Publish PDF.
+- Unpublish PDF.
+- Preview uploaded PDF.
+
+After adding a PDF and publishing it:
+
+The PDF must automatically appear in the public Coding Notes section.
+
+After editing:
+The public website must display the updated information.
+
+After deleting:
+The PDF must disappear from the public website and its associated stored file must be removed safely.
+
+Use confirmation dialogs before permanent deletion.
+
+B. MANAGE AFFILIATE PRODUCTS
+
+Provide:
+
+- Add product.
+- Upload product image.
+- Enter product name.
+- Write product description.
+- Add specifications.
+- Select product category.
+- Add affiliate URL.
+- Preview product.
+- Edit product.
+- Delete product.
+- Publish product.
+- Unpublish product.
+
+After publishing a product:
+
+It must automatically appear in the public Affiliate Products section.
+
+Changes must be reflected on the website without requiring manual frontend modifications.
+
+C. WEBSITE SETTINGS
+
+Provide editable settings for:
+
+- Website name.
+- Website description.
+- Logo.
+- Contact email.
+- Instagram URL.
+- Footer information.
+- Social media links.
+- SEO metadata.
+
+Do not allow ordinary visitors to modify website settings.
+
+# 7. DATABASE ARCHITECTURE
+
+Build a proper database-driven website.
+
+I will provide my database connection code later.
+
+IMPORTANT INSTRUCTION:
+
+Do not invent database credentials or assume a connection URL.
+
+First create a clean and modular database architecture that can be connected to my provided configuration later.
+
+Keep database configuration separate from business logic.
+
+Use environment variables for sensitive credentials.
+
+Prepare database integration so that I can provide my connection code without requiring a complete rewrite of the website.
+
+Suggested architecture:
+
+1. Admin users
+2. Coding notes
+3. Affiliate products
+4. Media files
+5. Website settings
+
+Suggested database tables:
+
+admin_users:
+- id
+- email
+- password_hash or authentication_provider_id
+- role
+- created_at
+
+coding_notes:
+- id
+- title
+- description
+- language
+- file_url
+- file_size
+- filename
+- is_published
+- created_at
+- updated_at
+
+affiliate_products:
+- id
+- name
+- description
+- image_url
+- category
+- specifications
+- affiliate_url
+- is_published
+- created_at
+- updated_at
+
+website_settings:
+- id
+- setting_key
+- setting_value
+- updated_at
+
+media_files:
+- id
+- filename
+- storage_url
+- file_type
+- file_size
+- created_at
+
+DATABASE BEHAVIOR:
+
+- Use real database queries.
+- Use proper relationships where required.
+- Validate all submitted data.
+- Prevent duplicate or invalid records where appropriate.
+- Use transactions for operations that need atomicity.
+- Handle database errors properly.
+- Avoid hardcoded website content for dynamic sections.
+- Fetch public content only when its publication status is active.
+- Use efficient queries and pagination.
+- Implement caching carefully with reliable invalidation.
+
+When an administrator publishes, edits, or deletes an item, update the public website as quickly as practical.
+
+Use real-time subscriptions if supported by the database provider, or use cache revalidation and efficient fetching.
+
+Do not claim real-time functionality unless it is actually implemented.
+
+# 8. GOOGLE ADSENSE COMPLIANCE — CRITICAL REQUIREMENTS
+
+Design and implement the entire website according to Google's current AdSense Program Policies, Google Publisher Policies, and site-readiness recommendations.
+
+Do not treat the existence of policy pages as sufficient for approval.
+
+The complete website must offer genuine value to visitors.
+
+A. ORIGINAL AND VALUABLE CONTENT
+
+- Write original educational content throughout the website.
+- Do not copy content from other websites.
+- Do not spin existing articles.
+- Do not publish meaningless AI-generated paragraphs.
+- Do not create pages containing only headings.
+- Do not use lorem ipsum.
+- Do not publish empty categories.
+- Do not create fake resources.
+- Do not create fake testimonials.
+- Do not create fake reviews.
+- Do not use misleading descriptions.
+
+Write useful explanations for programming topics.
+
+Where appropriate, include:
+- Concept explanations.
+- Syntax examples.
+- Code snippets.
+- Real-world use cases.
+- Common mistakes.
+- Learning objectives.
+- Frequently asked questions.
+- Further learning resources.
+
+All educational material must be checked for technical correctness.
+
+B. PRIVACY POLICY
+
+Create a comprehensive Privacy Policy page.
+
+It must accurately disclose:
+
+- Information collected from visitors.
+- Cookies and similar technologies.
+- Analytics tools, if implemented.
+- Third-party services.
+- Advertising technologies.
+- Google AdSense data usage.
+- IP address and browser-related information where applicable.
+- Data retention practices.
+- User rights.
+- Contact information.
+- Policy update procedures.
+
+Include Google's required advertising cookie disclosures.
+
+Explain that third-party vendors, including Google, may use cookies to serve advertisements based on users' previous visits to this website or other websites.
+
+Explain that users can manage personalized advertising through:
+
+https://adssettings.google.com/
+
+Also provide:
+
+https://www.aboutads.info/
+
+Include a prominent link to Google's explanation of data usage:
+
+https://policies.google.com/technologies/partner-sites
+
+Do not falsely claim that the website does not collect any information if analytics, hosting, authentication, or advertising tools collect it.
+
+C. COOKIE CONSENT
+
+Implement a professional cookie consent interface.
+
+Requirements:
+
+- Clear cookie information.
+- Accept all option.
+- Reject non-essential option.
+- Manage preferences option.
+- Remember user preferences.
+- Do not load non-essential technologies before the required consent.
+
+If the website serves users in the EEA, UK, or Switzerland, implement an appropriate Google-certified CMP wherever required by Google's current consent policies.
+
+Ensure that the consent interface is accessible and mobile-friendly.
+
+D. REQUIRED POLICY PAGES
+
+Create complete pages for:
+
+1. Privacy Policy
+2. Terms and Conditions
+3. Disclaimer
+4. Affiliate Disclosure
+5. Cookie Policy
+6. About Us
+7. Contact Us
+
+Every page must be accessible through the footer.
+
+Never use placeholder legal text.
+
+Write policies that accurately describe the actual website functionality and third-party services.
+
+E. AD PLACEMENT READINESS
+
+Prepare clean locations for future AdSense placements.
+
+However:
+
+- Do not insert fake advertisements.
+- Do not create fake Google ad units.
+- Do not place ads next to PDF download buttons.
+- Do not place ads next to navigation buttons.
+- Do not make advertisements look like website content.
+- Do not make ads look like download buttons.
+- Do not use deceptive labels.
+- Do not encourage visitors to click advertisements.
+- Do not use floating advertisements that interfere with navigation.
+- Do not overload the website with advertisements.
+
+The actual content must remain the primary focus.
+
+Only implement AdSense code when I provide the actual publisher details and the site is ready.
+
+F. TRAFFIC QUALITY
+
+Never implement:
+- Artificial traffic generation.
+- Automated ad clicking.
+- Paid-to-click traffic.
+- Misleading redirects.
+- Forced downloads.
+- Traffic exchange schemes.
+- Hidden advertisements.
+- Any method designed to artificially inflate impressions or clicks.
+
+G. WEBSITE NAVIGATION
+
+Make every public page accessible.
+
+Ensure:
+- No broken navigation.
+- No misleading buttons.
+- No empty pages.
+- No unwanted redirects.
+- No intrusive pop-ups.
+- No broken external links.
+- No inaccessible content behind an unexpected login wall.
+
+H. COPYRIGHT AND INTELLECTUAL PROPERTY
+
+Use original text.
+
+Use images that are owned, licensed, or otherwise authorized for use.
+
+Do not download copyrighted product images from random sources without permission.
+
+Use actual product images provided by the administrator or authorized image sources.
+
+Only upload educational PDFs that Short Study has the rights to distribute.
+
+# 9. CONTACT INFORMATION
+
+Use the following official contact information throughout the relevant website pages.
+
+Website Name: Short Study
+
+Contact Email:
+gauravfartiyal751@gmail.com
+
+Instagram:
+@shortstudy999
+
+Instagram URL:
+https://www.instagram.com/shortstudy999/
+
+Display a professional contact section.
+
+Add a working email link using mailto.
+
+Create a contact form with:
+- Name
+- Email
+- Subject
+- Message
+- Submit button
+
+Implement actual backend processing for the contact form.
+
+Include input validation, spam protection, and appropriate error/success messages.
+
+Do not create a contact form that only displays a fake success message.
+
+# 10. PRIVACY POLICY ADDRESS
+
+Include the following website contact address in the Privacy Policy:
+
+Bajwalpur Rampur Road, Haldwani, Uttarakhand, India.
+
+Use this address only where appropriate for the website's contact and privacy disclosures.
+
+Do not invent additional company registrations, legal identities, telephone numbers, or office details.
+
+# 11. ABOUT US PAGE — ORIGINAL CONTENT
+
+Write a complete, original About Us page.
+
+Explain:
+
+- What Short Study is.
+- Why the platform was created.
+- Its focus on coding and technology education.
+- Its commitment to accessible programming resources.
+- Its approach to providing useful coding notes.
+- Its commitment to accurate and helpful educational information.
+- Its approach to recommending relevant technology products.
+
+Use natural, professional language.
+
+Do not invent company history, team size, awards, or achievements.
+
+Make the content genuinely useful and trustworthy.
+
+# 12. CONTACT US PAGE
+
+Build a professional contact page.
+
+Include:
+
+- Contact email.
+- Instagram profile.
+- Contact form.
+- Expected response information only if verified.
+- Clear reasons for contacting Short Study.
+
+Make all contact links functional.
+
+# 13. SEO OPTIMIZATION
+
+Implement technical SEO properly.
+
+Requirements:
+
+- Unique title for every page.
+- Unique meta description.
+- Canonical URLs.
+- Semantic HTML.
+- Proper H1, H2, H3 structure.
+- Open Graph metadata.
+- Social sharing metadata.
+- XML sitemap.
+- Robots.txt.
+- Descriptive URL slugs.
+- Image alt text.
+- Breadcrumb navigation.
+- Internal linking.
+- Fast loading.
+- Mobile-first indexing compatibility.
+
+Create structured data only where appropriate and supported by visible page content.
+
+Potential schema types:
+- Organization
+- WebSite
+- Article
+- BreadcrumbList
+
+Do not add misleading structured data or fake ratings.
+
+Create a proper 404 page.
+
+Ensure search engines can crawl all intended public educational pages.
+
+Never expose private admin pages or confidential data in the sitemap.
+
+# 14. PERFORMANCE AND RESPONSIVENESS
+
+The entire website must work properly on:
+
+- Desktop computers.
+- Laptops.
+- Tablets.
+- Android smartphones.
+- iPhones.
+
+Implement:
+
+- Responsive layouts.
+- Mobile navigation.
+- Optimized images.
+- Lazy loading.
+- Efficient database fetching.
+- Minimal unnecessary JavaScript.
+- Code splitting where appropriate.
+- Proper loading states.
+- Error handling.
+- Accessible buttons.
+- Keyboard navigation.
+
+Target excellent Core Web Vitals.
+
+Pay particular attention to:
+- LCP
+- INP
+- CLS
+
+Avoid unnecessary animations and oversized images.
+
+The website should remain fast even when the number of PDFs and affiliate products increases.
+
+# 15. SECURITY REQUIREMENTS
+
+Implement:
+
+- Server-side authentication.
+- Role-based authorization.
+- Secure environment variables.
+- Input validation.
+- Output sanitization.
+- SQL injection protection.
+- XSS protection.
+- CSRF protection where applicable.
+- Rate limiting.
+- Secure HTTP headers.
+- Safe file upload validation.
+- File type and file size restrictions.
+- Secure storage permissions.
+- Protection against unauthorized admin access.
+
+Never trust frontend-only validation.
+
+Only authenticated administrators can create, edit, publish, or delete content.
+
+Public visitors must only have access to intended public data.
+
+# 16. SUGGESTED TECHNOLOGY STACK
+
+Choose a production-ready stack compatible with my hosting and database configuration.
+
+Preferred possibilities:
+
+Frontend:
+- Next.js or another suitable modern framework.
+- TypeScript.
+- Tailwind CSS.
+- Accessible UI components.
+
+Backend:
+- Secure server-side API.
+- Server-side database operations.
+
+Database:
+- PostgreSQL or my provided database provider.
+
+Storage:
+- Reliable cloud file storage for PDFs and product images.
+
+Authentication:
+- A trusted authentication solution with server-side authorization.
+
+Deployment:
+- Vercel or another compatible production hosting provider.
+
+IMPORTANT:
+
+Do not force a particular database provider before seeing my connection code.
+
+Keep the database layer modular so that I can provide my database credentials and connection implementation later.
+
+# 17. ORIGINAL CONTENT CREATION
+
+Do not deliver an empty website with only a beautiful interface.
+
+Create substantial, original educational content.
+
+Prepare an initial content structure covering:
+
+PYTHON:
+- Introduction to Python.
+- Variables and Data Types.
+- Operators.
+- Conditional Statements.
+- Loops.
+- Functions.
+- Lists and Tuples.
+- Dictionaries and Sets.
+- Object-Oriented Programming.
+- File Handling.
+- Exception Handling.
+
+C PROGRAMMING:
+- Introduction to C.
+- Variables and Data Types.
+- Operators.
+- Conditional Statements.
+- Loops.
+- Arrays.
+- Functions.
+- Pointers.
+- Structures.
+
+C++:
+- Introduction to C++.
+- Data Types.
+- Functions.
+- Classes and Objects.
+- Constructors.
+- Inheritance.
+- Polymorphism.
+
+WEB DEVELOPMENT:
+- HTML Fundamentals.
+- CSS Fundamentals.
+- JavaScript Fundamentals.
+- DOM Manipulation.
+- Responsive Web Design.
+- Frontend Development Concepts.
+
+COMPUTER SCIENCE:
+- Data Structures.
+- Algorithms.
+- Operating Systems.
+- Database Fundamentals.
+- Computer Networks.
+- Software Development Fundamentals.
+
+Write original explanations for these subjects.
+
+Do not pretend that a PDF is available until an actual PDF file has been uploaded.
+
+If sample PDFs are created, generate genuine educational documents with complete and checked content.
+
+# 18. FOOTER DESIGN
+
+Create a professional multi-column footer.
+
+Column 1:
+Short Study logo and a short original brand description.
+
+Column 2:
+Explore:
+- Coding Notes
+- Affiliate Products
+
+Column 3:
+Information:
+- About Us
+- Contact Us
+- Privacy Policy
+- Terms and Conditions
+- Disclaimer
+- Affiliate Disclosure
+- Cookie Policy
+
+Column 4:
+Connect:
+- Email
+- Instagram
+
+Bottom:
+Copyright © [current year] Short Study. All rights reserved.
+
+Use a dynamic year instead of hardcoding an outdated year.
+
+# 19. ADMIN AND PUBLIC WEBSITE SYNCHRONIZATION
+
+This is one of the most important requirements.
+
+The admin dashboard and public website must use the same database.
+
+Example:
+
+Administrator adds a Python PDF.
+
+Database stores the PDF information.
+
+The public Coding Notes page fetches the published record.
+
+The new PDF becomes visible automatically.
+
+Administrator updates its description.
+
+The updated description appears publicly.
+
+Administrator deletes the PDF.
+
+The deleted PDF disappears from the public website.
+
+Repeat the same behavior for Affiliate Products.
+
+No manual HTML editing should be necessary.
+
+No hardcoded sample records should be used in production.
+
+Ensure proper cache invalidation after administrative changes.
+
+# 20. FINAL TESTING AND QUALITY ASSURANCE
+
+Before considering development complete, conduct a comprehensive testing process.
+
+PUBLIC WEBSITE TESTING:
+
+- Homepage loads correctly.
+- All navigation links work.
+- Coding Notes displays database records.
+- PDF Open button works.
+- PDF Download button works.
+- Affiliate product images load.
+- Affiliate links open correct destinations.
+- Search works.
+- Category filters work.
+- Footer links work.
+- Contact form works.
+- Privacy Policy is accessible.
+- Mobile layout works.
+
+ADMIN TESTING:
+
+- Login works.
+- Unauthorized access is blocked.
+- Add PDF works.
+- Edit PDF works.
+- Delete PDF works.
+- Publish and unpublish work.
+- Add affiliate product works.
+- Edit affiliate product works.
+- Delete affiliate product works.
+- Product image upload works.
+- Database changes reflect publicly.
+
+SEO TESTING:
+
+- Sitemap works.
+- Robots.txt works.
+- Canonical URLs are correct.
+- Metadata exists.
+- No broken internal links.
+- Public pages are crawlable.
+
+SECURITY TESTING:
+
+- Admin routes are protected.
+- Database credentials are not exposed.
+- Unauthorized users cannot modify data.
+- File uploads are validated.
+- User input is sanitized.
+
+ADSENSE READINESS TESTING:
+
+Review the entire public website against:
+- Google AdSense Program Policies.
+- Google Publisher Policies.
+- Google Publisher Restrictions.
+- Privacy disclosure requirements.
+- Site navigation requirements.
+- Content quality recommendations.
+- Traffic quality requirements.
+- Copyright requirements.
+- Relevant consent requirements.
+
+Create an internal compliance checklist and report every issue found.
+
+Never mark a requirement as passed unless it has actually been tested.
+
+# 21. DEVELOPMENT WORKFLOW
+
+Follow this development sequence:
+
+PHASE 1:
+Design the complete UI/UX and website architecture.
+
+PHASE 2:
+Build the homepage and all public pages.
+
+PHASE 3:
+Develop the Coding Notes section.
+
+PHASE 4:
+Develop the Affiliate Products section.
+
+PHASE 5:
+Build secure admin authentication and dashboard.
+
+PHASE 6:
+Implement database integration.
+
+PHASE 7:
+Implement PDF and image storage.
+
+PHASE 8:
+Write original educational content and legal pages.
+
+PHASE 9:
+Implement SEO and performance optimizations.
+
+PHASE 10:
+Perform functionality, security, responsiveness, and AdSense-readiness testing.
+
+Do not skip phases.
+
+Do not deliver a static frontend and call it a complete website.
+
+# 22. IMPORTANT FINAL INSTRUCTIONS
+
+I want a real production-ready website, not a demo.
+
+The website must be:
+
+- Visually exceptional.
+- Fully responsive.
+- Database-driven.
+- Secure.
+- SEO-friendly.
+- Fast.
+- Easy to manage.
+- Educationally valuable.
+- Prepared for Google AdSense review.
+
+Do not fabricate content, statistics, reviews, links, or functionality.
+
+Do not create fake approval claims.
+
+Do not use placeholder paragraphs in any public-facing page.
+
+Write original content across the entire website.
+
+Make the Admin Dashboard powerful but simple to operate.
+
+Keep the code modular, clean, maintainable, and properly documented.
+
+When I provide my database connection code, integrate it into the existing architecture without breaking the website.
+
+**FINAL SUCCESS CRITERION:**
+
+A visitor should be able to discover useful programming resources, read original educational content, open and download genuine PDFs, explore relevant technology products, understand the website's policies, and contact Short Study without confusion.
+
+An administrator should be able to manage both major sections entirely through the protected `/admin` dashboard.
+
+The final product should feel like a premium, professionally engineered programming education platform.
+
+Build Short Study as a real educational brand, not merely another website template.

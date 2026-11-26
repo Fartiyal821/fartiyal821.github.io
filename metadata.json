@@ -1,0 +1,6 @@
+{
+  "name": "Short Study",
+  "description": "Original programming notes in PDF format, computer science fundamentals, and curated technology recommendations for coding students and developers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

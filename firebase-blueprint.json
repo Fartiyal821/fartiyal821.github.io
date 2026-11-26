@@ -1,0 +1,457 @@
+{
+  "entities": {
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized administrator account granted write privileges across Short Study collections.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 160,
+          "description": "Verified administrator email address."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin"],
+          "maxLength": 20,
+          "description": "Administrator role identifier."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the admin record was created."
+        }
+      },
+      "required": ["email", "role", "createdAt"]
+    },
+    "CodingNote": {
+      "title": "CodingNote",
+      "description": "Downloadable programming and computer science PDF study resource.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 160,
+          "description": "Human-readable PDF title."
+        },
+        "slug": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9-]+$",
+          "description": "URL-safe descriptive slug."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1200,
+          "description": "Original concise educational summary."
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "Python",
+            "C Programming",
+            "C++",
+            "Java",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "SQL",
+            "Data Structures and Algorithms",
+            "Computer Science Fundamentals",
+            "Web Development",
+            "Other Programming Resources"
+          ],
+          "maxLength": 64,
+          "description": "Programming language or computer science category."
+        },
+        "fileUrl": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 500,
+          "description": "Validated PDF file path or URL."
+        },
+        "fileSize": {
+          "type": "number",
+          "description": "PDF file size in bytes."
+        },
+        "filename": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 255,
+          "description": "Original or normalized PDF filename."
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Controls public visibility."
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Firebase Auth UID of the administrator who created the record."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification server timestamp."
+        }
+      },
+      "required": [
+        "title",
+        "slug",
+        "description",
+        "language",
+        "fileUrl",
+        "fileSize",
+        "filename",
+        "isPublished",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AffiliateProduct": {
+      "title": "AffiliateProduct",
+      "description": "Curated technology product recommendation with transparent affiliate disclosure.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 160,
+          "description": "Product name."
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000,
+          "description": "Original educational overview of the product."
+        },
+        "imageUrl": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Authorized product image URL."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Programming Accessories",
+            "Keyboards and Mice",
+            "Laptops and Computers",
+            "Developer Tools",
+            "Audio Equipment",
+            "Study Accessories",
+            "Storage Devices",
+            "Other Technology Products"
+          ],
+          "maxLength": 64,
+          "description": "Product category."
+        },
+        "features": {
+          "type": "array",
+          "description": "Key product features (bounded up to 12 items)."
+        },
+        "specifications": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Key technical specifications."
+        },
+        "suitableAudience": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Who the product is best suited for."
+        },
+        "advantages": {
+          "type": "string",
+          "maxLength": 600,
+          "description": "Practical advantages."
+        },
+        "limitations": {
+          "type": "string",
+          "maxLength": 600,
+          "description": "Honest limitations or trade-offs."
+        },
+        "affiliateUrl": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 1000,
+          "pattern": "^https?://",
+          "description": "Destination affiliate URL."
+        },
+        "disclosureStatus": {
+          "type": "boolean",
+          "description": "Indicates affiliate disclosure applies."
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Controls public visibility."
+        },
+        "authorUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Admin UID."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation server timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update server timestamp."
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "imageUrl",
+        "category",
+        "features",
+        "specifications",
+        "suitableAudience",
+        "advantages",
+        "limitations",
+        "affiliateUrl",
+        "disclosureStatus",
+        "isPublished",
+        "authorUid",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MediaFile": {
+      "title": "MediaFile",
+      "description": "Metadata for uploaded PDFs and product images managed in the Admin Media Library.",
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 255,
+          "description": "Stored safe filename."
+        },
+        "originalName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255,
+          "description": "Original filename supplied on upload."
+        },
+        "storageUrl": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 500,
+          "description": "Serving URL path."
+        },
+        "fileType": {
+          "type": "string",
+          "enum": ["pdf", "image"],
+          "maxLength": 16,
+          "description": "Media category."
+        },
+        "mimeType": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 100,
+          "description": "Validated MIME type."
+        },
+        "fileSize": {
+          "type": "number",
+          "description": "File size in bytes."
+        },
+        "uploadedByUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Admin UID."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Upload server timestamp."
+        }
+      },
+      "required": [
+        "filename",
+        "originalName",
+        "storageUrl",
+        "fileType",
+        "mimeType",
+        "fileSize",
+        "uploadedByUid",
+        "createdAt"
+      ]
+    },
+    "WebsiteSettings": {
+      "title": "WebsiteSettings",
+      "description": "Global site metadata, contact links, and branding controlled from the Admin Dashboard.",
+      "type": "object",
+      "properties": {
+        "siteName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Public website name."
+        },
+        "siteDescription": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500,
+          "description": "Tagline and site summary."
+        },
+        "logoText": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "Wordmark text."
+        },
+        "logoUrl": {
+          "type": "string",
+          "maxLength": 500,
+          "description": "Optional uploaded logo URL."
+        },
+        "contactEmail": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 160,
+          "description": "Official contact email."
+        },
+        "instagramHandle": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 80,
+          "description": "Official Instagram handle."
+        },
+        "instagramUrl": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 300,
+          "description": "Official Instagram profile URL."
+        },
+        "footerDescription": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 400,
+          "description": "Footer brand description."
+        },
+        "seoTitle": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 120,
+          "description": "Default SEO title."
+        },
+        "seoDescription": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 300,
+          "description": "Default SEO meta description."
+        },
+        "updatedByUid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Admin UID."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update server timestamp."
+        }
+      },
+      "required": [
+        "siteName",
+        "siteDescription",
+        "logoText",
+        "logoUrl",
+        "contactEmail",
+        "instagramHandle",
+        "instagramUrl",
+        "footerDescription",
+        "seoTitle",
+        "seoDescription",
+        "updatedByUid",
+        "updatedAt"
+      ]
+    },
+    "ContactMessage": {
+      "title": "ContactMessage",
+      "description": "Public contact form inquiry stored directly in Cloud Firestore for administrator review.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Sender name."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "minLength": 5,
+          "maxLength": 160,
+          "description": "Sender email address."
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 160,
+          "description": "Inquiry subject."
+        },
+        "message": {
+          "type": "string",
+          "minLength": 15,
+          "maxLength": 3000,
+          "description": "Message body."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["new", "reviewed"],
+          "maxLength": 16,
+          "description": "Review status."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Submission server timestamp."
+        }
+      },
+      "required": ["name", "email", "subject", "message", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Authorized admin records keyed by Firebase Auth UID."
+    },
+    "/coding_notes/{noteId}": {
+      "schema": { "$ref": "#/entities/CodingNote" },
+      "description": "Programming and computer science PDF resources."
+    },
+    "/affiliate_products/{productId}": {
+      "schema": { "$ref": "#/entities/AffiliateProduct" },
+      "description": "Affiliate product recommendations."
+    },
+    "/media_files/{fileId}": {
+      "schema": { "$ref": "#/entities/MediaFile" },
+      "description": "Saved media resource URLs metadata."
+    },
+    "/website_settings/{settingId}": {
+      "schema": { "$ref": "#/entities/WebsiteSettings" },
+      "description": "Global website configuration documents."
+    },
+    "/contact_messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ContactMessage" },
+      "description": "Contact inquiries submitted via the public Contact Us page."
+    }
+  }
+}

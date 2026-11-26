@@ -1,0 +1,12 @@
+{
+  "projectId": "shortstudy-notes",
+  "appId": "1:140226735682:web:7d4a50bad2bed11efb47db",
+  "apiKey": "AIzaSyA0xQ1U1fmisLHWIfXGaVg1clq5hxl8b_A",
+  "authDomain": "shortstudy-notes.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-be2202bc-3910-45dc-934f-50455a457037",
+  "storageBucket": "shortstudy-notes.firebasestorage.app",
+  "messagingSenderId": "140226735682",
+  "measurementId": "",
+  "oAuthClientId": "140226735682-r4lpe1ritl2r3pgfbq2chgh14pdjp8tr.apps.googleusercontent.com",
+  "recaptchaSiteKey": ""
+}

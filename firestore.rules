@@ -1,0 +1,319 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global safety net: default deny everything
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isBootstrappedOwner() {
+      return isVerifiedUser() && request.auth.token.email == 'gauravfartiyal751@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrappedOwner() || (
+        isVerifiedUser() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isValidLanguage(lang) {
+      return lang in [
+        'Python',
+        'C Programming',
+        'C++',
+        'Java',
+        'JavaScript',
+        'HTML',
+        'CSS',
+        'SQL',
+        'Data Structures and Algorithms',
+        'Computer Science Fundamentals',
+        'Web Development',
+        'Other Programming Resources'
+      ];
+    }
+
+    function isValidProductCategory(category) {
+      return category in [
+        'Programming Accessories',
+        'Keyboards and Mice',
+        'Laptops and Computers',
+        'Developer Tools',
+        'Audio Equipment',
+        'Study Accessories',
+        'Storage Devices',
+        'Other Technology Products'
+      ];
+    }
+
+    function isValidFileUrl(url) {
+      return url is string && url.size() >= 5 && url.size() <= 500 &&
+        !url.matches('.*\\.\\..*') &&
+        (url.matches('^/pdfs/[a-zA-Z0-9_.\\-]+\\.pdf$') ||
+          url.matches('^/assets/[a-zA-Z0-9_.\\-/]+$') ||
+          url.matches('^https?://.*'));
+    }
+
+    function isValidExternalUrl(url) {
+      return url is string && url.size() >= 8 && url.size() <= 1000 &&
+        url.matches('^https?://.*');
+    }
+
+    function isValidAdminUser(data) {
+      return data.keys().hasAll(['email', 'role', 'createdAt']) &&
+        data.keys().hasOnly(['email', 'role', 'createdAt']) &&
+        data.email is string && data.email.size() >= 5 && data.email.size() <= 160 &&
+        data.role == 'admin' &&
+        data.createdAt is timestamp;
+    }
+
+    function isValidCodingNote(data) {
+      return data.keys().hasAll([
+          'title', 'slug', 'description', 'language', 'fileUrl',
+          'fileSize', 'filename', 'isPublished', 'authorUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'title', 'slug', 'description', 'language', 'fileUrl',
+          'fileSize', 'filename', 'isPublished', 'authorUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.title is string && data.title.size() >= 2 && data.title.size() <= 160 &&
+        data.slug is string && data.slug.size() >= 2 && data.slug.size() <= 160 &&
+        data.slug.matches('^[a-z0-9-]+$') &&
+        data.description is string && data.description.size() >= 10 && data.description.size() <= 1200 &&
+        data.language is string && data.language.size() <= 64 && isValidLanguage(data.language) &&
+        isValidFileUrl(data.fileUrl) &&
+        data.fileSize is number && data.fileSize >= 0 && data.fileSize <= 52428800 &&
+        data.filename is string && data.filename.size() >= 3 && data.filename.size() <= 255 &&
+        data.isPublished is bool &&
+        data.authorUid is string && data.authorUid.size() >= 1 && data.authorUid.size() <= 128 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidAffiliateProduct(data) {
+      return data.keys().hasAll([
+          'name', 'description', 'imageUrl', 'category', 'features',
+          'specifications', 'suitableAudience', 'advantages', 'limitations',
+          'affiliateUrl', 'disclosureStatus', 'isPublished', 'authorUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'name', 'description', 'imageUrl', 'category', 'features',
+          'specifications', 'suitableAudience', 'advantages', 'limitations',
+          'affiliateUrl', 'disclosureStatus', 'isPublished', 'authorUid', 'createdAt', 'updatedAt'
+        ]) &&
+        data.name is string && data.name.size() >= 2 && data.name.size() <= 160 &&
+        data.description is string && data.description.size() >= 10 && data.description.size() <= 2000 &&
+        data.imageUrl is string && data.imageUrl.size() <= 500 &&
+        (data.imageUrl == '' || isValidFileUrl(data.imageUrl)) &&
+        data.category is string && data.category.size() <= 64 && isValidProductCategory(data.category) &&
+        data.features is list && data.features.size() <= 12 &&
+        (data.features.size() == 0 || (data.features[0] is string && data.features[0].size() <= 200)) &&
+        data.specifications is string && data.specifications.size() <= 1000 &&
+        data.suitableAudience is string && data.suitableAudience.size() <= 300 &&
+        data.advantages is string && data.advantages.size() <= 600 &&
+        data.limitations is string && data.limitations.size() <= 600 &&
+        isValidExternalUrl(data.affiliateUrl) &&
+        data.disclosureStatus is bool &&
+        data.isPublished is bool &&
+        data.authorUid is string && data.authorUid.size() >= 1 && data.authorUid.size() <= 128 &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidMediaFile(data) {
+      return data.keys().hasAll([
+          'filename', 'originalName', 'storageUrl', 'fileType',
+          'mimeType', 'fileSize', 'uploadedByUid', 'createdAt'
+        ]) &&
+        data.keys().hasOnly([
+          'filename', 'originalName', 'storageUrl', 'fileType',
+          'mimeType', 'fileSize', 'uploadedByUid', 'createdAt'
+        ]) &&
+        data.filename is string && data.filename.size() >= 3 && data.filename.size() <= 255 &&
+        data.originalName is string && data.originalName.size() >= 1 && data.originalName.size() <= 255 &&
+        isValidFileUrl(data.storageUrl) &&
+        data.fileType in ['pdf', 'image'] &&
+        data.mimeType is string && data.mimeType.size() >= 3 && data.mimeType.size() <= 100 &&
+        data.fileSize is number && data.fileSize >= 0 && data.fileSize <= 52428800 &&
+        data.uploadedByUid is string && data.uploadedByUid.size() >= 1 && data.uploadedByUid.size() <= 128 &&
+        data.createdAt is timestamp;
+    }
+
+    function isValidWebsiteSettings(data) {
+      return data.keys().hasAll([
+          'siteName', 'siteDescription', 'logoText', 'logoUrl', 'contactEmail',
+          'instagramHandle', 'instagramUrl', 'footerDescription', 'seoTitle',
+          'seoDescription', 'updatedByUid', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'siteName', 'siteDescription', 'logoText', 'logoUrl', 'contactEmail',
+          'instagramHandle', 'instagramUrl', 'footerDescription', 'seoTitle',
+          'seoDescription', 'updatedByUid', 'updatedAt'
+        ]) &&
+        data.siteName is string && data.siteName.size() >= 2 && data.siteName.size() <= 100 &&
+        data.siteDescription is string && data.siteDescription.size() >= 10 && data.siteDescription.size() <= 500 &&
+        data.logoText is string && data.logoText.size() >= 1 && data.logoText.size() <= 60 &&
+        data.logoUrl is string && data.logoUrl.size() <= 500 &&
+        (data.logoUrl == '' || isValidFileUrl(data.logoUrl)) &&
+        data.contactEmail is string && data.contactEmail.size() >= 5 && data.contactEmail.size() <= 160 &&
+        data.instagramHandle is string && data.instagramHandle.size() >= 2 && data.instagramHandle.size() <= 80 &&
+        isValidExternalUrl(data.instagramUrl) &&
+        data.footerDescription is string && data.footerDescription.size() >= 10 && data.footerDescription.size() <= 400 &&
+        data.seoTitle is string && data.seoTitle.size() >= 5 && data.seoTitle.size() <= 120 &&
+        data.seoDescription is string && data.seoDescription.size() >= 10 && data.seoDescription.size() <= 300 &&
+        data.updatedByUid is string && data.updatedByUid.size() >= 1 && data.updatedByUid.size() <= 128 &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidContactMessage(data) {
+      return data.keys().hasAll([
+          'name', 'email', 'subject', 'message', 'status', 'createdAt'
+        ]) &&
+        data.keys().hasOnly([
+          'name', 'email', 'subject', 'message', 'status', 'createdAt'
+        ]) &&
+        data.name is string && data.name.size() >= 2 && data.name.size() <= 100 &&
+        data.email is string && data.email.size() >= 5 && data.email.size() <= 160 &&
+        data.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$') &&
+        data.subject is string && data.subject.size() >= 3 && data.subject.size() <= 160 &&
+        data.message is string && data.message.size() >= 15 && data.message.size() <= 3000 &&
+        data.status in ['new', 'reviewed'] &&
+        data.createdAt is timestamp;
+    }
+
+    match /admins/{adminId} {
+      allow get: if isValidId(adminId) && (
+        (isVerifiedUser() && request.auth.uid == adminId) ||
+        isBootstrappedOwner()
+      );
+      allow list: if isBootstrappedOwner();
+      allow create: if isValidId(adminId) &&
+        isBootstrappedOwner() &&
+        isValidAdminUser(incoming()) &&
+        incoming().createdAt == request.time;
+      allow update: if isValidId(adminId) &&
+        isBootstrappedOwner() &&
+        isValidAdminUser(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['email', 'role']);
+      allow delete: if isValidId(adminId) && isBootstrappedOwner() && adminId != request.auth.uid;
+    }
+
+    match /coding_notes/{noteId} {
+      allow get: if isValidId(noteId) && (existing().isPublished == true || isAdmin());
+      allow list: if existing().isPublished == true || isBootstrappedOwner();
+      allow create: if isValidId(noteId) &&
+        isAdmin() &&
+        isValidCodingNote(incoming()) &&
+        incoming().authorUid == request.auth.uid &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isValidId(noteId) &&
+        isAdmin() &&
+        isValidCodingNote(incoming()) &&
+        incoming().authorUid == existing().authorUid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'title', 'slug', 'description', 'language', 'fileUrl',
+          'fileSize', 'filename', 'isPublished', 'updatedAt'
+        ]);
+      allow delete: if isValidId(noteId) && isAdmin();
+    }
+
+    match /affiliate_products/{productId} {
+      allow get: if isValidId(productId) && (existing().isPublished == true || isAdmin());
+      allow list: if existing().isPublished == true || isBootstrappedOwner();
+      allow create: if isValidId(productId) &&
+        isAdmin() &&
+        isValidAffiliateProduct(incoming()) &&
+        incoming().authorUid == request.auth.uid &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time;
+      allow update: if isValidId(productId) &&
+        isAdmin() &&
+        isValidAffiliateProduct(incoming()) &&
+        incoming().authorUid == existing().authorUid &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'name', 'description', 'imageUrl', 'category', 'features',
+          'specifications', 'suitableAudience', 'advantages', 'limitations',
+          'affiliateUrl', 'disclosureStatus', 'isPublished', 'updatedAt'
+        ]);
+      allow delete: if isValidId(productId) && isAdmin();
+    }
+
+    match /media_files/{fileId} {
+      allow get: if isValidId(fileId) && isAdmin();
+      allow list: if isBootstrappedOwner();
+      allow create: if isValidId(fileId) &&
+        isAdmin() &&
+        isValidMediaFile(incoming()) &&
+        incoming().uploadedByUid == request.auth.uid &&
+        incoming().createdAt == request.time;
+      allow update: if false;
+      allow delete: if isValidId(fileId) && isAdmin();
+    }
+
+    match /website_settings/{settingId} {
+      allow get: if isValidId(settingId) && settingId == 'global';
+      allow list: if false;
+      allow create: if isValidId(settingId) &&
+        settingId == 'global' &&
+        isAdmin() &&
+        isValidWebsiteSettings(incoming()) &&
+        incoming().updatedByUid == request.auth.uid &&
+        incoming().updatedAt == request.time;
+      allow update: if isValidId(settingId) &&
+        settingId == 'global' &&
+        isAdmin() &&
+        isValidWebsiteSettings(incoming()) &&
+        incoming().updatedByUid == request.auth.uid &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'siteName', 'siteDescription', 'logoText', 'logoUrl', 'contactEmail',
+          'instagramHandle', 'instagramUrl', 'footerDescription', 'seoTitle',
+          'seoDescription', 'updatedByUid', 'updatedAt'
+        ]);
+      allow delete: if false;
+    }
+
+    match /contact_messages/{messageId} {
+      allow get: if isValidId(messageId) && isAdmin();
+      allow list: if isBootstrappedOwner();
+      allow create: if isValidId(messageId) &&
+        isValidContactMessage(incoming()) &&
+        incoming().status == 'new' &&
+        incoming().createdAt == request.time;
+      allow update: if isValidId(messageId) &&
+        isAdmin() &&
+        isValidContactMessage(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['status']);
+      allow delete: if isValidId(messageId) && isAdmin();
+    }
+  }
+}
