@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run typecheck and lint
+        run: npm run lint
+
+      - name: Build production site
+        run: npm run build:gh-pages
+
+      - name: Verify docs output
+        run: |
+          test -f docs/index.html
+          test -f docs/404.html
+          test -f docs/sitemap.xml
+          test -f docs/robots.txt
+          echo "Build verification passed successfully."
